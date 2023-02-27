@@ -10,9 +10,18 @@ export default function Form() {
     const [messageImc, setMessageImc] = useState('preencha a altura e o peso');
     const [imc, setImc] = useState(null);
     const [textButton, setTextButton] = useState('Calcular');
+    const [errorMessage, setErrorMessage] = useState(null);
 
     function imcCalculator() {
         return setImc((weight / (height * height)).toFixed(2));
+    }
+
+    function verificationImcInputs(){
+        if(imc===null){
+            setErrorMessage('campo obrigatório*');
+        }else{
+            setErrorMessage(null)
+        }
     }
 
     function ValidationImc() {
@@ -22,11 +31,15 @@ export default function Form() {
             setWeight(null);
             setMessageImc("Seu IMC é igual :");
             setTextButton("Calcular Novamente");
+            setErrorMessage(null);
             return
-        }
+        }else{
+        verificationImcInputs();
         setImc(null)
         setTextButton("Calcular");
         setMessageImc("preencha a altura e o peso");
+        }
+        
     }
     return (
         <View style={styles.formContext} >
@@ -36,18 +49,19 @@ export default function Form() {
                     style={styles.input}
                     onChangeText={setHeight}
                     value={height}
-                    placeholder="Altura, Ex. 1.87"
+                    placeholder="Altura, Ex. 1.74"
                     keyboardType="numbers-and-punctuation"
                 />
-
+                <Text style={styles.errorMessage}>{errorMessage}</Text>
                 <Text style={styles.formLabel} >Peso</Text>
                 <TextInput
                     style={styles.input}
                     onChangeText={setWeight}
                     value={weight}
-                    placeholder="Peso, Ex. 50.5767"
+                    placeholder="Peso, Ex. 61.57"
                     keyboardType="numbers-and-punctuation"
                 ></TextInput>
+                <Text style={styles.errorMessage}>{errorMessage}</Text>
 
                 <TouchableOpacity
                     style={styles.ButtonCalculator}
