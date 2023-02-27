@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
     errorMessage:{
         fontSize: 12,
         color: 'red',
-        fontWeight:'250',
+        fontWeight:'300',
         paddingLeft: 20,
         marginTop: -10,
         marginBottom: 5
