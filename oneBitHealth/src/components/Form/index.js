@@ -55,7 +55,7 @@ export default function Form() {
                     onChangeText={setHeight}
                     value={height}
                     placeholder="Altura, Ex. 1.74"
-                    keyboardType="numbers-and-punctuation"
+                    keyboardType="numeric"
                 />
                 <Text style={styles.errorMessage}>{errorMessage}</Text>
                 <Text style={styles.formLabel} >Peso</Text>
@@ -64,7 +64,7 @@ export default function Form() {
                     onChangeText={setWeight}
                     value={weight}
                     placeholder="Peso, Ex. 61.57"
-                    keyboardType="numbers-and-punctuation"
+                    keyboardType="numeric"
                 ></TextInput>
                 <Text style={styles.errorMessage}>{errorMessage}</Text>
 
