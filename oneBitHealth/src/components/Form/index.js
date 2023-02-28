@@ -1,5 +1,11 @@
 import React, { useState } from "react";
-import { View, Text, TextInput, TouchableOpacity } from "react-native";
+import { 
+    View, 
+    Text, 
+    TextInput, 
+    TouchableOpacity,
+    Vibration
+} from "react-native";
 import ResultImc from "./ResultImc";
 import styles from "./style/";
 
@@ -18,9 +24,8 @@ export default function Form() {
 
     function verificationImcInputs(){
         if(imc===null){
+            Vibration.vibrate();
             setErrorMessage('campo obrigatório*');
-        }else{
-            setErrorMessage(null)
         }
     }
 
@@ -50,7 +55,7 @@ export default function Form() {
                     onChangeText={setHeight}
                     value={height}
                     placeholder="Altura, Ex. 1.74"
-                    keyboardType="numbers-and-punctuation"
+                    keyboardType="numeric"
                 />
                 <Text style={styles.errorMessage}>{errorMessage}</Text>
                 <Text style={styles.formLabel} >Peso</Text>
@@ -59,7 +64,7 @@ export default function Form() {
                     onChangeText={setWeight}
                     value={weight}
                     placeholder="Peso, Ex. 61.57"
-                    keyboardType="numbers-and-punctuation"
+                    keyboardType="numeric"
                 ></TextInput>
                 <Text style={styles.errorMessage}>{errorMessage}</Text>
 
